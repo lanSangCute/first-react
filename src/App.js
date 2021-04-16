@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Welcome from "./pages/welcome/welcome"
 import Clock from "./pages/clock/clock"
+import Calculator from "./pages/calculator/calculator"
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
       <main>
         <Welcome name="lanjuan" />
         <Clock />
+        <Calculator />
       </main>
     </div>
   );
