@@ -8,7 +8,9 @@ import Form from './pages/form/form'
 import './pages/import/import'
 import ReactLazy from './pages/reactLazy/reactLazy'
 import Context from './pages/context/context'
-
+import NoEs6 from './pages/NoEs6/NoEs6'
+import Jsx from './pages/jsx/jsx'
+import HighComps from './pages/HighComps/HighComps'
 function App() {
   return (
     <div className="App">
@@ -21,6 +23,9 @@ function App() {
         <Form />
         <ReactLazy />
         <Context />
+        <NoEs6 name="lanjuan" />
+        <Jsx kind="jsx" onClick={()=>console.log('click')} />
+        <HighComps />
       </main>
     </div>
   );

@@ -1,6 +1,55 @@
-import React from 'react';
+import React, { useRef, Component } from 'react';
 import DocumentTitle from 'react-document-title'
 import FocusChild from './focusChild';
+
+function FuncitonFocus(props) {
+    const refInput = useRef(null)
+
+    function focus() {
+        refInput.current.focus();
+    }
+    
+    return (
+        <div>
+            <input
+                type="text"
+                placeholder="我是FuncitonFocus"
+                ref={refInput}
+            />
+            <button onClick={focus}>FuncitonFocus</button>
+        </div>
+    );
+}
+
+class FunctionFocusClass extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.textInput = null;
+        this.setTextInputRef = el => {
+            this.textInput = el;
+        }
+
+        this.focus = () => {
+            if(this.textInput){
+                this.textInput.focus();
+            }
+        }
+    }
+    
+    render() {
+        return (
+            <div>
+                <input
+                    type="text"
+                    placeholder="我是FunctionFocusClass"
+                    ref={this.setTextInputRef}
+                />
+                <button onClick={this.focus}>FunctionFocusClass</button>
+            </div>
+        );
+    }
+}
 export default class Focus extends React.Component{
     constructor(props){
         super(props)
@@ -11,7 +60,6 @@ export default class Focus extends React.Component{
         this.childRef = React.createRef();
     }
     focus(){
-        console.log(this.ref.current,'this.ref.current')
         this.ref.current.focus();
     }
     focusChild(){
@@ -25,7 +73,8 @@ export default class Focus extends React.Component{
                         <input
                             type="text"
                             placeholder="我是当前组件"
-                            ref={this.ref} />
+                            ref={this.ref}
+                        />
                         <button
                             onClick={this.focus}
                         >设置当前组件输入框focus</button>
@@ -36,6 +85,8 @@ export default class Focus extends React.Component{
                             onClick={this.focusChild}
                         >设置子组件输入框focus</button>
                     </div>
+                    <FuncitonFocus />
+                    <FunctionFocusClass />
                 </div>
             </DocumentTitle>
             
